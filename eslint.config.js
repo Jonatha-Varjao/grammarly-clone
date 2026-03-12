@@ -1,33 +1,33 @@
-{
-  "root": true,
-  "env": {
-    "browser": true,
-    "es2022": true,
-    "webextensions": true
+import { defineConfig } from 'eslint/config';
+import tseslint from '@typescript-eslint/eslint-plugin';
+import tsparser from '@typescript-eslint/parser';
+import globals from 'globals';
+
+export default defineConfig([
+  {
+    files: ['**/*.ts', '**/*.tsx'],
+    languageOptions: {
+      parser: tsparser,
+      parserOptions: {
+        ecmaVersion: 'latest',
+        sourceType: 'module',
+        ecmaFeatures: {
+          jsx: true,
+        },
+      },
+      globals: {
+        ...globals.browser,
+        chrome: 'readonly',
+        React: 'readonly',
+      },
+    },
+    plugins: {
+      '@typescript-eslint': tseslint,
+    },
+    rules: {
+      'no-unused-vars': 'off',
+      'no-undef': 'off',
+      '@typescript-eslint/no-unused-vars': ['warn', { argsIgnorePattern: '^_' }],
+    },
   },
-  "extends": [
-    "eslint:recommended",
-    "plugin:@typescript-eslint/recommended",
-    "plugin:react/recommended",
-    "plugin:react-hooks/recommended"
-  ],
-  "parser": "@typescript-eslint/parser",
-  "parserOptions": {
-    "ecmaVersion": "latest",
-    "sourceType": "module",
-    "ecmaFeatures": {
-      "jsx": true
-    }
-  },
-  "plugins": ["@typescript-eslint", "react", "react-hooks"],
-  "rules": {
-    "react/react-in-jsx-scope": "off",
-    "@typescript-eslint/no-unused-vars": ["error", { "argsIgnorePattern": "^_" }],
-    "react/prop-types": "off"
-  },
-  "settings": {
-    "react": {
-      "version": "detect"
-    }
-  }
-}
+]);

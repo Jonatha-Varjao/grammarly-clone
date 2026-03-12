@@ -8,22 +8,22 @@ This is a browser extension built with **Manifest V3** that provides AI-powered 
 
 ### Tech Stack
 
-| Layer | Technology | Rationale |
-|-------|------------|-----------|
-| **Runtime** | Bun | Fast package management and execution |
-| **Language** | TypeScript (strict) | Type safety, better DX |
-| **Build Tool** | WXT | Vite-based, excellent extension support, multi-browser |
-| **UI** | React | Component-based, state management |
-| **State** | Zustand | Lightweight (~1KB), no provider wrapping |
-| **Manifest** | V3 | Required for Chrome, supported by all browsers |
+| Layer          | Technology          | Rationale                                      |
+| -------------- | ------------------- | ---------------------------------------------- |
+| **Runtime**    | Bun                 | Fast package management and execution          |
+| **Language**   | TypeScript (strict) | Type safety, better DX                         |
+| **Build Tool** | Bun (native)        | Fast bundler included in Bun runtime           |
+| **UI**         | React               | Component-based, state management              |
+| **State**      | Zustand             | Lightweight (~1KB), no provider wrapping       |
+| **Manifest**   | V3                  | Required for Chrome, supported by all browsers |
 
 ### Browser Support Strategy
 
-| Priority | Browsers | Approach |
-|----------|----------|----------|
-| Primary | Chrome, Edge, Brave, Opera | Native MV3 support |
-| Secondary | Firefox | WebExtensions polyfill if needed |
-| Future | Safari | Extension Workshop guidelines |
+| Priority  | Browsers                   | Approach                         |
+| --------- | -------------------------- | -------------------------------- |
+| Primary   | Chrome, Edge, Brave, Opera | Native MV3 support               |
+| Secondary | Firefox                    | WebExtensions polyfill if needed |
+| Future    | Safari                     | Extension Workshop guidelines    |
 
 **Cross-browser tradeoff**: Starting Chromium-first simplifies v1.0. Adding Firefox support requires handling `chrome.*` vs `browser.*` namespace differences and potential polyfills.
 
@@ -73,12 +73,14 @@ This is a browser extension built with **Manifest V3** that provides AI-powered 
 **Responsibility**: Captures user-selected text and injects UI elements into web pages.
 
 **Key Features**:
+
 - Text selection detection
 - Context menu integration
 - Floating action button for quick access
 - Message passing to background worker
 
 **Public API**:
+
 ```typescript
 // Types exposed to other modules
 interface ContentScriptAPI {
@@ -93,12 +95,14 @@ interface ContentScriptAPI {
 **Responsibility**: Handles long-running tasks, manages LLM communication, coordinates between components.
 
 **Key Features**:
+
 - LLM API calls (Ollama/OpenAI)
 - Message routing
 - Storage management
 - Keyboard shortcut handling
 
 **Public API**:
+
 ```typescript
 interface BackgroundAPI {
   analyzeText(text: string, emotion: EmotionType): Promise<AnalysisResult>;
@@ -112,6 +116,7 @@ interface BackgroundAPI {
 **Responsibility**: Quick access UI when clicking extension icon.
 
 **Key Features**:
+
 - Text input area
 - Emotion selector
 - Quick analyze button
@@ -122,6 +127,7 @@ interface BackgroundAPI {
 **Responsibility**: Full-featured analysis interface.
 
 **Key Features**:
+
 - Detailed text analysis view
 - Grammar/syntax feedback display
 - Tone transformation results
@@ -165,11 +171,11 @@ interface BackgroundAPI {
 
 ### Stores
 
-| Store | Purpose | Location |
-|-------|---------|----------|
-| `useAppStore` | UI state (selected text, current emotion, loading) | `src/stores/appStore.ts` |
-| `useSettingsStore` | User preferences (LLM endpoint, default emotion) | `src/stores/settingsStore.ts` |
-| `useHistoryStore` | Analysis history | `src/stores/historyStore.ts` |
+| Store              | Purpose                                            | Location                      |
+| ------------------ | -------------------------------------------------- | ----------------------------- |
+| `useAppStore`      | UI state (selected text, current emotion, loading) | `src/stores/appStore.ts`      |
+| `useSettingsStore` | User preferences (LLM endpoint, default emotion)   | `src/stores/settingsStore.ts` |
+| `useHistoryStore`  | Analysis history                                   | `src/stores/historyStore.ts`  |
 
 ### Persistence
 
@@ -182,12 +188,12 @@ interface BackgroundAPI {
 
 ### Supported Providers
 
-| Provider | Type | Endpoint | Authentication |
-|----------|------|----------|----------------|
-| Ollama | Local | `http://localhost:11434` | None |
-| LM Studio | Local | `http://localhost:1234/v1` | None |
-| OpenAI | Cloud | `https://api.openai.com/v1` | API Key |
-| Custom (OpenAI-compatible) | Both | Configurable | API Key |
+| Provider                   | Type  | Endpoint                    | Authentication |
+| -------------------------- | ----- | --------------------------- | -------------- |
+| Ollama                     | Local | `http://localhost:11434`    | None           |
+| LM Studio                  | Local | `http://localhost:1234/v1`  | None           |
+| OpenAI                     | Cloud | `https://api.openai.com/v1` | API Key        |
+| Custom (OpenAI-compatible) | Both  | Configurable                | API Key        |
 
 ### Prompt System
 

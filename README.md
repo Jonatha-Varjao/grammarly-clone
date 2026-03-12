@@ -12,23 +12,8 @@ A privacy-first browser extension that analyzes text using local or cloud LLMs, 
 
 ## Prerequisites
 
-- **Node.js** (v18+) - Managed via NVM
-- **Bun** - JavaScript runtime and package manager
+- **Bun** - JavaScript runtime, package manager, and bundler
 - **Ollama** (optional) - For local LLM inference
-
-### Installing and Using NVM
-
-```bash
-# Install NVM (if not installed)
-curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.0/install.sh | bash
-
-# Install Node.js LTS
-nvm install 20
-nvm use 20
-
-# Verify installation
-node --version  # Should output: v20.x.x
-```
 
 ### Installing Bun
 
@@ -38,6 +23,86 @@ curl -fsSL https://bun.sh/install | bash
 
 # Verify installation
 bun --version
+```
+
+## Quick Start
+
+Choose your preferred runtime:
+
+### Bun (Recommended)
+
+```bash
+bun install
+bun run dev
+```
+
+### npm
+
+```bash
+npm install
+npm run dev
+```
+
+### yarn
+
+```bash
+yarn
+yarn dev
+```
+
+---
+
+## Development
+
+### Development Mode
+
+```bash
+bun run dev   # or npm run dev / yarn dev
+```
+
+- Hot reload enabled
+- Auto-build on file save
+- Open `chrome://extensions/`, enable Developer mode, and load the `dist/` folder
+
+### Debugging
+
+#### VS Code
+
+1. Install "Chrome Debugger" or "Edge Tools" extension
+2. Press `F5` or go to Run > Start Debugging
+3. Select "Chrome: Debug Extension"
+4. Configure `launch.json` as shown below:
+
+```json
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Debug Extension",
+      "type": "chrome",
+      "request": "launch",
+      "url": "chrome://extensions/",
+      "webRoot": "${workspaceFolder}",
+      "preLaunchTask": "dev"
+    }
+  ]
+}
+```
+
+#### In Browser
+
+1. Open `chrome://extensions/`
+2. Click "Service Worker" (link in background) to debug the service worker
+3. Right-click the popup > Inspect to debug the UI
+
+### Build
+
+```bash
+# Production
+bun run build   # or npm run build
+
+# Clean previous build
+bun run clean
 ```
 
 ## Installation
@@ -106,7 +171,7 @@ bun run build
 │   └── manifest.json
 ├── dist/                    # Build output
 ├── docs/                    # Documentation
-├── vite.config.ts
+├── build.ts                 # Bun build script
 ├── tsconfig.json
 └── package.json
 ```
@@ -123,7 +188,7 @@ bun run build
 
 ### Firefox
 
-1. Run `bun run dev` 
+1. Run `bun run dev`
 2. Open `about:debugging#/runtime/this-firefox`
 3. Click **Load Temporary Add-on**
 4. Select the `manifest.json` file
@@ -146,7 +211,7 @@ bun run build
 
 - **Runtime**: Bun
 - **Language**: TypeScript (strict mode)
-- **Build Tool**: Vite + CRXJS plugin
+- **Bundler**: Bun (native bundler)
 - **UI Framework**: React 18
 - **State Management**: Zustand 5
 - **Extension Manifest**: MV3

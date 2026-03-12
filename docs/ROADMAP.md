@@ -12,9 +12,9 @@ Version 1.0 focuses on the core functionality: text selection, LLM integration, 
 
 #### Tasks
 
-- [ ] Initialize WXT project with TypeScript and React
-- [ ] Configure ESLint and Prettier
-- [ ] Set up Zustand stores (app, settings, history)
+- [x] Initialize project with Bun and TypeScript
+- [x] Set up Bun build system (build.ts)
+- [x] Set up Zustand stores (app, settings, history)
 - [ ] Create basic extension popup UI
 - [ ] Implement chrome.storage persistence
 - [ ] Set up manifest.json with basic permissions
@@ -134,14 +134,14 @@ Version 1.0 focuses on the core functionality: text selection, LLM integration, 
 
 ## Timeline Summary
 
-| Phase | Duration | Key Deliverable |
-|-------|----------|------------------|
-| Foundation | 2 weeks | Extension loads, basic UI |
-| Text Selection | 1 week | Text capture works |
-| LLM Integration | 1 week | Ollama connection |
-| Tone Transformation | 1 week | Core feature works |
-| Side Panel | 2 weeks | Full UI complete |
-| Polish | 1 week | Release-ready |
+| Phase               | Duration | Key Deliverable           |
+| ------------------- | -------- | ------------------------- |
+| Foundation          | 2 weeks  | Extension loads, basic UI |
+| Text Selection      | 1 week   | Text capture works        |
+| LLM Integration     | 1 week   | Ollama connection         |
+| Tone Transformation | 1 week   | Core feature works        |
+| Side Panel          | 2 weeks  | Full UI complete          |
+| Polish              | 1 week   | Release-ready             |
 
 **Total**: ~8 weeks to v1.0
 

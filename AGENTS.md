@@ -6,71 +6,46 @@ This file provides instructions and guidelines for AI agents working on this cod
 
 - **Project Name**: Grammarly Clone - AI Writing Assistant
 - **Type**: Browser Extension (Chrome/Firefox/Edge)
-- **Stack**: TypeScript + Bun + WXT + React + Zustand + Manifest V3
+- **Stack**: TypeScript + Bun (bundler + runtime) + React + Zustand + Manifest V3
 - **Core Functionality**: Text analysis and tone transformation using local/cloud LLMs
 
 ---
 
 ## Commands
 
+This project supports Bun, npm, and yarn. Use whichever you prefer.
+
 ### Development
 
-```bash
-# Install dependencies
-bun install
-
-# Start development server with hot reload
-bun run dev
-
-# Build for production
-bun run build
-
-# Build for specific browser
-bun run build:chrome
-bun run build:firefox
-```
+| Bun             | Description                             |
+| --------------- | --------------------------------------- |
+| `bun install`   | Install dependencies                    |
+| `bun run dev`   | Dev server with hot reload (watch mode) |
+| `bun run build` | Production build                        |
+| `bun run clean` | Clean dist folder                       |
 
 ### Code Quality
 
-```bash
-# Run linter
-bun run lint
-
-# Run type checker
-bun run typecheck
-
-# Fix linting errors automatically
-bun run lint:fix
-```
+| Bun | Description |
+|-----|-------------|
+| `bun run typecheck` | Run TypeScript type checker |
+| `bun run lint` | Run ESLint |
+| `bun run lint:fix` | Fix ESLint errors automatically |
 
 ### Testing
 
-```bash
-# Run all tests
-bun test
-
-# Run tests in watch mode
-bun test:watch
-
-# Run tests with coverage
-bun test:coverage
-
-# Run a single test file
-bun test <test-file-path>
-
-# Run a specific test by name
-bun test --grep "<test-name>"
-```
+| Bun                      | Description             |
+| ------------------------ | ----------------------- |
+| `bun test`               | Run all tests           |
+| `bun test --watch`       | Run tests in watch mode |
+| `bun test <file>`        | Run single test file    |
+| `bun test --grep <name>` | Run test by name        |
 
 ### Utilities
 
-```bash
-# Clean build artifacts
-bun run clean
-
-# Preview production build
-bun run preview
-```
+| Bun             | Description           |
+| --------------- | --------------------- |
+| `bun run clean` | Clean build artifacts |
 
 ---
 
@@ -223,9 +198,7 @@ try {
 }
 
 // Use Result types for expected errors
-type Result<T, E = Error> =
-  | { success: true; data: T }
-  | { success: false; error: E };
+type Result<T, E = Error> = { success: true; data: T } | { success: false; error: E };
 
 function safeParse(data: unknown): Result<AnalysisResult> {
   if (!data || typeof data !== 'object') {
@@ -297,23 +270,20 @@ type ExtensionMessage =
   | { action: 'UPDATE_SETTINGS'; payload: Settings };
 
 // Content script - communicate via messaging
-chrome.runtime.sendMessage(
-  { action: 'ANALYZE_TEXT', payload: { text: 'Hello' } },
-  (response) => {
-    if (chrome.runtime.lastError) {
-      console.error(chrome.runtime.lastError);
-      return;
-    }
-    console.log(response);
+chrome.runtime.sendMessage({ action: 'ANALYZE_TEXT', payload: { text: 'Hello' } }, (response) => {
+  if (chrome.runtime.lastError) {
+    console.error(chrome.runtime.lastError);
+    return;
   }
-);
+  console.log(response);
+});
 ```
 
 ### Testing
 
 ```typescript
-// Test file naming: *.test.ts or *.spec.ts
-import { describe, it, expect, vi } from 'vitest';
+// Test file naming: *.test.ts
+import { describe, it, expect } from 'bun:test';
 import { analyzeText } from './textAnalyzer';
 
 describe('analyzeText', () => {
@@ -403,5 +373,5 @@ src/
 
 - [Chrome Extension Docs](https://developer.chrome.com/docs/extensions/)
 - [MDN WebExtensions](https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions)
-- [WXT Framework](https://wxt.dev)
+- [Bun Bundler Docs](https://bun.com/docs/bundler)
 - [Zustand](https://github.com/pmndrs/zustand)
