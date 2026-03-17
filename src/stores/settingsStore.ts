@@ -72,7 +72,7 @@ export const useSettingsStore = create<SettingsState>()(
       setMaxHistoryItems: (maxHistoryItems) => set({ maxHistoryItems }),
     }),
     {
-      name: 'grammarly-clone-settings',
+      name: 'openquill-settings',
       storage: createJSONStorage(() => createChromeStorage()),
     }
   )

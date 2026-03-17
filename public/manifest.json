@@ -1,6 +1,6 @@
 {
   "manifest_version": 3,
-  "name": "Grammarly Clone",
+  "name": "OpenQuill",
   "description": "AI Writing Assistant - Grammar and tone transformation",
   "version": "1.0.0",
   "permissions": [

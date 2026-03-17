@@ -12,7 +12,7 @@ export default function SidepanelApp() {
 	return (
 		<div className='sidepanel-container'>
 			<header className='sidepanel-header'>
-				<h1>Grammarly Clone</h1>
+				<h1>OpenQuill</h1>
 				<nav className='sidepanel-nav'>
 					<button
 						className={view === 'input' ? 'active' : ''}

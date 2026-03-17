@@ -4,7 +4,7 @@ This file provides instructions and guidelines for AI agents working on this cod
 
 ## Project Overview
 
-- **Project Name**: Grammarly Clone - AI Writing Assistant
+- **Project Name**: OpenQuill - AI Writing Assistant
 - **Type**: Browser Extension (Chrome/Firefox/Edge)
 - **Stack**: TypeScript + Bun (bundler + runtime) + React + Zustand + Manifest V3
 - **Core Functionality**: Text analysis and tone transformation using local/cloud LLMs

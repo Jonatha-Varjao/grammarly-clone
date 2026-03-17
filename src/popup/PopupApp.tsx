@@ -12,7 +12,7 @@ export default function PopupApp() {
 	return (
 		<div className='popup-container'>
 			<header className='popup-header'>
-				<h1>Grammarly Clone</h1>
+				<h1>OpenQuill</h1>
 			</header>
 
 			<main className='popup-main'>

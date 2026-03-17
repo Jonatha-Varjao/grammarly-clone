@@ -11,7 +11,7 @@
 - Content script detects text selection using `window.getSelection()`
 - Selection triggers floating action button (FAB) near selection
 - Keyboard shortcut `Ctrl+Shift+G` (configurable) triggers analysis
-- Context menu item "Analyze with Grammarly Clone" available
+- Context menu item "Analyze with OpenQuill" available
 
 #### Edge Cases
 

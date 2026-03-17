@@ -37,7 +37,7 @@ Version 1.0 focuses on the core functionality: text selection, LLM integration, 
 - [ ] Add keyboard shortcut for quick analysis (e.g., Ctrl+Shift+G)
 - [ ] Create floating action button (FAB) that appears on text selection
 - [ ] Implement message passing between content script and background
-- [ ] Add context menu option "Analyze with Grammarly Clone"
+- [ ] Add context menu option "Analyze with OpenQuill"
 
 #### Deliverables
 

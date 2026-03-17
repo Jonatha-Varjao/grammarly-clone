@@ -61,7 +61,7 @@ export const useHistoryStore = create<HistoryState>()(
       },
     }),
     {
-      name: 'grammarly-clone-history',
+      name: 'openquill-history',
       storage: createJSONStorage(() => createChromeStorage()),
     }
   )

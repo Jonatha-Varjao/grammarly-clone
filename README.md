@@ -1,4 +1,4 @@
-# Grammarly Clone - AI Writing Assistant Extension
+# OpenQuill - AI Writing Assistant Extension
 
 A privacy-first browser extension that analyzes text using local or cloud LLMs, providing grammar corrections, style improvements, and tone transformations.
 

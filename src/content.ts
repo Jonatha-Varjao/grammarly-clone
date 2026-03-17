@@ -1,4 +1,4 @@
-console.log('Grammarly Clone content script loaded');
+console.log('OpenQuill content script loaded');
 
 let fab: HTMLButtonElement | null = null;
 
@@ -6,8 +6,8 @@ function createFAB(): HTMLButtonElement {
   if (fab) return fab;
 
   fab = document.createElement('button');
-  fab.className = 'grammarly-clone-fab';
-  fab.title = 'Analyze with Grammarly Clone';
+  fab.className = 'openquill-fab';
+  fab.title = 'Analyze with OpenQuill';
   fab.innerHTML = '✨';
   fab.style.cssText = 'position: absolute; z-index: 2147483647; width: 36px; height: 36px; border-radius: 50%; border: none; background: #10b981; color: white; cursor: pointer; font-size: 18px; display: none; align-items: center; justify-content: center; box-shadow: 0 2px 8px rgba(0,0,0,0.2); transition: transform 0.2s, opacity 0.2s;';
 
